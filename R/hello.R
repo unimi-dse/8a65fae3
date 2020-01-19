@@ -4,7 +4,7 @@ hello_g <- function() {
 }
 
 runIR <- function() {
-  
+  install.packages("shinydashboard")
   library(shiny)
   library(shinydashboard)
   runApp("R/app", launch.browser = T)
