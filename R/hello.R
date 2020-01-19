@@ -14,6 +14,12 @@ runIR <- function() {
 # read data ---------------------------------------------------------------
   d <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
   data <- read_csv(d)
+
+# source ui ---------------------------------------------------------------
+  script <- getURL("https://github.com/unimi-dse/8a65fae3/raw/master/modules/ui.R", ssl.verifypeer = FALSE)
+  
+  eval(parse(text = script))
+
   
 # ui side -----------------------------------------------------------------
   ui <- dashboardPage(
