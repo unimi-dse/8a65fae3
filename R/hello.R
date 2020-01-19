@@ -16,8 +16,7 @@ runIR <- function() {
   data <- read_csv(d)
 
 # source ui ---------------------------------------------------------------
-  script <- getURL("https://github.com/unimi-dse/8a65fae3/raw/master/modules/ui.R", ssl.verifypeer = FALSE)
-  
+  script <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R")
   eval(parse(text = script))
 
   
