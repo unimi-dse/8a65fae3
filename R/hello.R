@@ -16,3 +16,8 @@
 hello_g <- function() {
   print("Hello, world! This is Greg")
 }
+
+runIR <- function() {
+  library(shiny)
+  runExample("01_hello", launch.browser = T)
+}
