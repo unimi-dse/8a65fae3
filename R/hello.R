@@ -7,6 +7,14 @@ runIR <- function() {
   
   library(shiny)
   library(shinydashboard)
+  library(RCurl)
+  library(tidyverse)
+
+
+# read data ---------------------------------------------------------------
+  d <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
+  data <- read_csv(text = d)
+  
   
 # ui side -----------------------------------------------------------------
   ui <- dashboardPage(
