@@ -13,8 +13,7 @@ runIR <- function() {
 
 # read data ---------------------------------------------------------------
   d <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
-  data <- read_csv(text = d)
-  
+  data <- read_csv(d)
   
 # ui side -----------------------------------------------------------------
   ui <- dashboardPage(
