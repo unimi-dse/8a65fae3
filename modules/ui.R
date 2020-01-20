@@ -12,9 +12,9 @@ ui <- dashboardPage(
   dashboardSidebar(
     
     sidebarMenu(
-      menuItem("tab_1", tabName = "tab_1", icon=icon("home")),
-      menuItem("tab_2", tabName = "tab_2", icon=icon("chart-line")), 
-      menuItem("tab_3", tabName = "tab_3")
+      menuItem("Home", tabName = "tab_1", icon=icon("home")),
+      menuItem("Inspection", tabName = "tab_2", icon=icon("search")), 
+      menuItem("Cointegration", tabName = "tab_3", icon=icon("chart-line"))
     )
   ),
   dashboardBody(
@@ -90,11 +90,39 @@ ui <- dashboardPage(
                 column(6,
                        withSpinner(plotlyOutput("spreadsplot"))
                        )
-                )
+                ),
+              HTML("<h4>The results confirm the literature findings since the null hypothesis is 
+                   rejected at 5\% confidence level. Therefore it can be concluded that the spreads
+                   are integrated of order zero. This finding has relevant implications since the 
+                   spread provides information about the expectations of future rates. In other words,
+                   we can derive from the spread whether long-term rates will increase or drop in the
+                   future - provided that the expectation theory holds.</h4>")
               ),
       
       tabItem(tabName = "tab_3",
-              HTML("Greg"))
+              HTML("
+                   h2>Cointegration Test</h2>
+                   <h4>We now proceed to run a cointegration test to confirm that there is a connection
+                   between short and long-term interest rates. For this purpose, the Engle and Granger
+                   cointegration test was run using y2 as a dependent variable.</h4>
+                   "),
+              fluidRow(
+                column(6,
+                       withSpinner(plotOutput("lm_plot"))
+                ),
+                column(6,
+                       withSpinner(plotlyOutput("lm_resid"))
+                )
+              ),
+              HTML("
+                    <h4>The cointegration test summarises two steps into a single output which, if it was
+                    broken down into its components, it would look as follows:<br>
+                    <ul>
+                    <li>based on the ADF test, the two series are I(1)</li>
+                    <li>their residuals from OLS are I(0) (reject null hypothesis in adf test).</li>
+                    </ul></h4>
+                   ")
+              )
     )
   )
 )

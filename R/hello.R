@@ -7,7 +7,7 @@ hello_g <- function() {
 runIR <- function() {
 
 dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly", "shinycssloaders",
-                  "grid", "gridExtra", "aTSA", "vars")
+                  "grid", "gridExtra", "aTSA", "vars", "broom")
   
 for (x in dependencies) {
   if(x %in% rownames(installed.packages()) == T) {
@@ -70,6 +70,26 @@ for (x in dependencies) {
         mutate(type="with drift and trend")
     )
   
+
+# cointegration test ------------------------------------------------------
+  
+  # linear regression model
+  mod <- lm(y2 ~ m2, data = data)
+  dflm <- augment(mod) %>%
+    mutate(date=data$date)
+  
+  adfred <- adf.test(dflm$.resid, nlag = 3)
+  
+  adfred_1 <- data.frame(adfred$type1) %>%
+    mutate(type="no drift no trend ") %>% 
+    bind_rows(
+      data.frame(adfred$type2) %>%
+        mutate(type="with drift no trend")
+    ) %>%
+    bind_rows(
+      data.frame(adfred$type3) %>%
+        mutate(type="with drift and trend")
+    )
   
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
@@ -102,6 +122,23 @@ server <- function(input, output) {
       geom_line()
     ggplotly(plot)
   })
+  
+  output$lm_plot <- renderPlotly({
+    plot <- ggplot(dflm, aes(x = m2, y = y2)) +
+      geom_smooth(method = "lm", se = FALSE, color = "lightgrey") +
+      geom_segment(aes(xend = m2, yend = .fitted), alpha = .2) +
+      geom_point(aes(color = abs(.resid))) + # size also mapped
+      scale_color_continuous(low = "black", high = "red") +
+      guides(color = FALSE, size = FALSE)
+    ggplotly(plot)
+  })
+  
+  output$lm_resid <- renderPlotly({
+    plot <- ggplot(dflm, aes(x = date, y = .resid)) + 
+      geom_line()
+    ggplotly(plot)
+  })
+  
   
 }
   
