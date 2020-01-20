@@ -1,8 +1,9 @@
-
+#' @export
 hello_g <- function() {
   print("Hello, world! This is Greg")
 }
 
+#' @export
 runIR <- function() {
 
 dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly", "shinycssloaders",
