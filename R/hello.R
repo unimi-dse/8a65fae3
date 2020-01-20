@@ -124,13 +124,13 @@ server <- function(input, output) {
   })
   
   output$lm_plot <- renderPlotly({
-    plot_lm <- ggplot(dflm, aes(x = m2, y = y2)) +
-      geom_smooth(method = "lm", se = FALSE, color = "lightgrey") +
+    plot <- ggplot(dflm, aes(x = m2, y = y2)) +
+      geom_line(aes(y=.fitted), color="lightgrey") +
       geom_segment(aes(xend = m2, yend = .fitted), alpha = .2) +
       geom_point(aes(color = abs(.resid))) + # size also mapped
       scale_color_continuous(low = "black", high = "red") +
       guides(color = FALSE, size = FALSE)
-    ggplotly(plot_lm)
+    ggplotly(plot)
   })
   
   output$lm_resid <- renderPlotly({
