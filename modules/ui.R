@@ -14,16 +14,21 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     
+    # # css
+    # tags$head(tags$style(HTML('
+    #   .tab-content {
+    #     margin-top: 30px;
+    #     margin-bottom: 30px;
+    #     margin-right: 30px;
+    #     margin-left: 30px;
+    #     color:red;
+    #   }
+    #   '))),
+    
     # css
-    tags$head(tags$style(HTML('
-      .tab-content {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        margin-right: 30px;
-        margin-left: 30px;
-        color:red;
-      }
-      '))),
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+    ),
     
     tabItems(
       tabItem(tabName = "tab_1",
