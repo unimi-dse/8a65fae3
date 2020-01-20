@@ -25,7 +25,6 @@ ui <- dashboardPage(
       }
       '))),
 
-    
     tabItems(
       tabItem(tabName = "tab_1",
               HTML("<h1>hello world<h1>")),
