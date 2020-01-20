@@ -64,7 +64,14 @@ ui <- dashboardPage(
                    inversion of the yield curve occurred, leading to a scenario where short-term
                    investments had higher yields than long-term ones.</h4>
                    <h2>Interest Rates are I(1)</h2>"),
-              plotOutput("table_1")
+              fluidRow(
+                column(6,
+                  plotOutput("table_1")
+                ),
+                column(6,
+                  plotOutput("table_2")
+                )
+              )
               ),
       
       tabItem(tabName = "tab_3",

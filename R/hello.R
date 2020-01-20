@@ -26,9 +26,12 @@ for (x in dependencies) {
     gather(key="type", value="value", -date) %>%
     mutate(type = as.factor(type))
   
+  
+
+# adf tests --------------------------------------------------------------
   p <- adf.test(data$m2, nlag = 3)
   
-  p_1 <- data.frame(p$type1) %>%
+  p <- data.frame(p$type1) %>%
     mutate(type="no drift no trend ") %>% 
     bind_rows(
       data.frame(p$type2) %>%
@@ -39,8 +42,20 @@ for (x in dependencies) {
         mutate(type="with drift and trend")
     )
   
-  table_1 <- grid.table(p_1)
-
+  q <- adf.test(data$y2, nlag = 3)
+  
+  q_1 <- data.frame(q$type1) %>%
+    mutate(type="no drift no trend ") %>% 
+    bind_rows(
+      data.frame(q$type2) %>%
+        mutate(type="with drift no trend")
+    ) %>%
+    bind_rows(
+      data.frame(q$type3) %>%
+        mutate(type="with drift and trend")
+    )
+  
+  
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
                     ssl.verifypeer = FALSE)
@@ -57,6 +72,10 @@ server <- function(input, output) {
   
   output$table_1 <- renderPlot({    
     grid.table(p_1)
+  })
+  
+  output$table_2 <- renderPlot({    
+    grid.table(q_1)
   })
   
 }
