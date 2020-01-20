@@ -108,7 +108,7 @@ ui <- dashboardPage(
                    "),
               fluidRow(
                 column(6,
-                       withSpinner(plotOutput("lm_plot"))
+                       withSpinner(plotlyOutput("lm_plot"))
                 ),
                 column(6,
                        withSpinner(plotlyOutput("lm_resid"))

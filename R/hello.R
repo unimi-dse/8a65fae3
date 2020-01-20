@@ -124,7 +124,6 @@ server <- function(input, output) {
   })
   
   output$lm_plot <- renderPlotly({
-    print(
       ggplotly(
         ggplot(dflm, aes(x = m2, y = y2)) +
         geom_line(aes(y=.fitted), color="lightgrey") +
@@ -133,7 +132,6 @@ server <- function(input, output) {
         scale_color_continuous(low = "black", high = "red") +
         guides(color = FALSE, size = FALSE)
       )
-    )
   })
   
   output$lm_resid <- renderPlotly({
