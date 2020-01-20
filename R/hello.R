@@ -27,7 +27,13 @@ for (x in dependencies) {
   eval(parse(text = script))
 
 # server side -------------------------------------------------------------
-  server <- function(input, output) { }
+server <- function(input, output) { 
+  
+  output$plot_1 <- renderPlot({
+    plot(iris)
+  })
+  
+}
   
   
 # run app -----------------------------------------------------------------

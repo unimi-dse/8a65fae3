@@ -7,7 +7,7 @@ ui <- dashboardPage(
   dashboardSidebar(
     
     sidebarMenu(
-      menuItem("tab_1", tabName = "tab_1"),
+      menuItem(tabName = "tab_1", icon = icon("home")),
       menuItem("tab_2", tabName = "tab_2"), 
       menuItem("tab_3", tabName = "tab_3")
     )
@@ -50,6 +50,7 @@ ui <- dashboardPage(
                    ")),
       
       tabItem(tabName = "tab_2",
+              plotOutput("plot_1"),
               HTML("this is")),
       
       tabItem(tabName = "tab_3",
