@@ -1,11 +1,5 @@
 library(shinydashboard)
 library(shiny)
-library(RCurl)
-
-text <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/www/custom.css")
-read.delim("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/www/custom.css")
-
-readtext(text)
 
 ui <- dashboardPage(
   
@@ -20,23 +14,17 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     
-    # # css
-    # tags$head(tags$style(HTML('
-    #   .tab-content {
-    #     margin-top: 30px;
-    #     margin-bottom: 30px;
-    #     margin-right: 30px;
-    #     margin-left: 30px;
-    #     color:red;
-    #   }
-    #   '))),
-    
-    # css test
-    tags$head(tags$style(HTML(
-      
-    )
-    )),
-    
+    # css
+    tags$head(tags$style(HTML('
+      .tab-content {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-right: 30px;
+        margin-left: 30px;
+        color:red;
+      }
+      '))),
+
     
     tabItems(
       tabItem(tabName = "tab_1",
