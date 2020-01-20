@@ -88,7 +88,7 @@ ui <- dashboardPage(
                        plotOutput("table_3")
                 ),
                 column(6,
-                       plotOutput("table_2")
+                       
                 )
               )
               ),
