@@ -95,6 +95,8 @@ withConsoleRedirect <- function(containerId, expr) {
   
   adfred <- adf.test(dflm$.resid, nlag = 3)
   
+  adfred$type1
+  
   adfred_1 <- data.frame(adfred$type1) %>%
     mutate(type="no drift no trend ") %>% 
     bind_rows(
@@ -120,13 +122,20 @@ server <- function(input, output) {
     ggplotly(plot)
   })
   
-  output$table_1 <- renderPlot({    
-    grid.table(p_1, theme= ttheme_default(base_size = 18) )
+  observe({
+    withConsoleRedirect("adfm2y2", {
+      p_1
+      q_1
+    })
   })
   
-  output$table_2 <- renderPlot({ 
-    grid.table(q_1, theme= ttheme_default(base_size = 18) )
-  })
+  # output$table_1 <- renderPlot({    
+  #   grid.table(p_1, theme= ttheme_default(base_size = 18) )
+  # })
+  # 
+  # output$table_2 <- renderPlot({ 
+  #   grid.table(q_1, theme= ttheme_default(base_size = 18) )
+  # })
   
   output$table_3 <- renderPlot({
     grid.table(z_1, theme= ttheme_default(base_size = 18) )
@@ -157,7 +166,7 @@ server <- function(input, output) {
   
   observe({
     withConsoleRedirect("console", {
-      str(cars)
+      adf.test(dflm$.resid, nlag = 3)
     })
   })
   
