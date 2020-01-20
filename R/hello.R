@@ -123,9 +123,14 @@ server <- function(input, output) {
   })
   
   observe({
-    withConsoleRedirect("adfm2y2", {
-      p_1
-      q_1
+    withConsoleRedirect("adfm2", {
+      adf.test(data$m2, nlag = 3)
+    })
+  })
+  
+  observe({
+    withConsoleRedirect("adfy2", {
+      adf.test(data$m2, nlag = 3)
     })
   })
   

@@ -75,7 +75,10 @@ ui <- dashboardPage(
               #     withSpinner(plotOutput("table_2"))
               #   )
               # ),
-              pre(id = "adfm2y2"),
+              fluidRow(
+                column(6, pre(id = "adfm2")),
+                column(6, pre(id = "adfy2"))
+              ),
               HTML("<h4>Firstly, the short-term interest rate m2 is analysed with the Augmented 
                    Dickey-Fuller test. As can be seen from the ADF test output, the null hypothesis 
                    cannot be rejected therefore we have no evidence to say that m2 is I(0). The 
