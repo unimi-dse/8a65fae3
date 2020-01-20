@@ -130,7 +130,7 @@ server <- function(input, output) {
   
   observe({
     withConsoleRedirect("adfy2", {
-      adf.test(data$m2, nlag = 3)
+      adf.test(data$y2, nlag = 3)
     })
   })
   
