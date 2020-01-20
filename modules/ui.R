@@ -29,22 +29,22 @@ ui <- dashboardPage(
               HTML("
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates</h1>
-                   <h2>Author: Gregorio Saporito</h2>
-                     <p>The Expectation hypothesis of the term structure of interest 
-                     rates states that long-term rates are influenced by the expectations
-                     that investors have on future short-term rates. To assess the validity
-                     of this hypothesis a series of statistical analyses was run. Firstly, 
-                     a cointegration test between short and long-term interest rates was run.
-                     Subsequently, a vector error correction estimate, a Granger causality test,
-                     and impulse response analysis were run to verify whether long-term rates
-                     anticipate future movements of short rates. This research topic has
-                     been extensively explored due to the level of insight that it could 
-                     provide to central banks. Central banks mostly rely on short-term financial
-                     instruments for the implementation of monetary policies. A better understanding
-                     of the relations between short and long-term rates could help central banks
-                     implement more effective policies. This research aims to empirically confirm
-                     this framework of the yield curve through an analysis of US dollar LIBOR 
-                     interbank rates.</p>
+                   <h2>Author: Gregorio Saporito</h2><br>
+                   <h4>The Expectation hypothesis of the term structure of interest 
+                   rates states that long-term rates are influenced by the expectations
+                   that investors have on future short-term rates. To assess the validity
+                   of this hypothesis a series of statistical analyses was run. Firstly, 
+                   a cointegration test between short and long-term interest rates was run.
+                   Subsequently, a vector error correction estimate, a Granger causality test,
+                   and impulse response analysis were run to verify whether long-term rates
+                   anticipate future movements of short rates. This research topic has
+                   been extensively explored due to the level of insight that it could 
+                   provide to central banks. Central banks mostly rely on short-term financial
+                   instruments for the implementation of monetary policies. A better understanding
+                   of the relations between short and long-term rates could help central banks
+                   implement more effective policies. This research aims to empirically confirm
+                   this framework of the yield curve through an analysis of US dollar LIBOR 
+                   interbank rates.</h4>
                    ")),
       tabItem(tabName = "tab_2",
               HTML("this is")),
