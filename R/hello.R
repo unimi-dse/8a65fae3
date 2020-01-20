@@ -20,6 +20,11 @@ for (x in dependencies) {
 # read data ---------------------------------------------------------------
   d <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
   data <- read_csv(d)
+  
+  data_gathered <- data %>%
+    select(date, m2, y2) %>%
+    gather(key="type", value="value", -date) %>%
+    mutate(type = as.factor(type))
 
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
@@ -29,7 +34,8 @@ for (x in dependencies) {
 # server side -------------------------------------------------------------
 server <- function(input, output) { 
   output$distPlot <- renderPlot({
-    plot(iris$Sepal.Length, iris$Sepal.Width)
+    ggplot(data_gathered, aes(x=date, y=value, col = type)) +
+      geom_line()
   })
 }
   
