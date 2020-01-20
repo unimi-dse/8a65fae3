@@ -19,8 +19,8 @@ ui <- dashboardPage(
       .tab-content {
         margin-top: 30px;
         margin-bottom: 30px;
-        margin-right: 30px;
-        margin-left: 30px;
+        margin-right: 40px;
+        margin-left: 40px;
       }
       '))),
 
@@ -30,7 +30,7 @@ ui <- dashboardPage(
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates</h1>
                    <h2>Author: Gregorio Saporito</h2>
-                   <h4>The Expectation hypothesis of the term structure of interest 
+                   <p>The Expectation hypothesis of the term structure of interest 
                    rates states that long-term rates are influenced by the expectations
                    that investors have on future short-term rates. To assess the validity
                    of this hypothesis a series of statistical analyses was run. Firstly, 
@@ -44,7 +44,7 @@ ui <- dashboardPage(
                    of the relations between short and long-term rates could help central banks
                    implement more effective policies. This research aims to empirically confirm
                    this framework of the yield curve through an analysis of US dollar LIBOR 
-                   interbank rates.</h4>
+                   interbank rates.</p>
                    ")),
       tabItem(tabName = "tab_2",
               HTML("this is")),
