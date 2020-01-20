@@ -86,9 +86,9 @@ ui <- dashboardPage(
               fluidRow(
                 column(6,
                        withSpinner(plotOutput("table_3"))
-                       ),
+                ),
                 column(6,
-                       withSpinner(plotlyOutput(outputId = "spreadsplot"))
+                       withSpinner(plotlyOutput("spreadsplot"))
                 )
               ),
       
