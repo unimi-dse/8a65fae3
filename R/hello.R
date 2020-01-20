@@ -130,7 +130,7 @@ server <- function(input, output) {
       geom_point(aes(color = abs(.resid))) + # size also mapped
       scale_color_continuous(low = "black", high = "red") +
       guides(color = FALSE, size = FALSE)
-    ggplotly(plot)
+    ggplotly(plot_lm)
   })
   
   output$lm_resid <- renderPlotly({
