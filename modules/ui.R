@@ -50,7 +50,6 @@ ui <- dashboardPage(
                    ")),
       
       tabItem(tabName = "tab_2",
-              plotOutput(outputId = "plot_1"),
               HTML("this is")
               ),
       

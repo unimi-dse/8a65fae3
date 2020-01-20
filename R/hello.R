@@ -29,10 +29,6 @@ for (x in dependencies) {
 # server side -------------------------------------------------------------
 server <- function(input, output) { 
   
-  output$plot_1 <- renderPlot({
-    plot(iris)
-  })
-  
 }
   
   
