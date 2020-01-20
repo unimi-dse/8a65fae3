@@ -2,6 +2,7 @@ library(shinydashboard)
 library(shiny)
 library(tidyverse)
 library(plotly)
+library(shinycssloaders)
 
 ui <- dashboardPage(
   
