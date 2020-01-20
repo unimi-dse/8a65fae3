@@ -21,8 +21,8 @@ ui <- dashboardPage(
       .tab-content {
         margin-top: 30px;
         margin-bottom: 30px;
-        margin-right: 40px;
-        margin-left: 40px;
+        margin-right: 50px;
+        margin-left: 50px;
       }
       '))),
 
@@ -52,7 +52,7 @@ ui <- dashboardPage(
                    ")),
       
       tabItem(tabName = "tab_2",
-              HTML("<h1>Data Inspection</h1>"),
+              HTML("<h2>Data Inspection</h2>"),
               withSpinner(plotlyOutput(outputId = "distPlot")),
               HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
@@ -62,7 +62,9 @@ ui <- dashboardPage(
                    expectation hypothesis(Shiller R.J., 1979). Nevertheless, the presence of some
                    outliers is worth noting. For example, during the 2007 financial crisis an 
                    inversion of the yield curve occurred, leading to a scenario where short-term
-                   investments had higher yields than long-term ones.</h4>")
+                   investments had higher yields than long-term ones.</h4>
+                   <h2>Interest Rates are I(1)</h2>"),
+              plotOutput("table_1")
               ),
       
       tabItem(tabName = "tab_3",
