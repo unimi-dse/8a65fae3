@@ -124,7 +124,7 @@ server <- function(input, output) {
   })
   
   output$lm_plot <- renderPlotly({
-    plot <- ggplot(dflm, aes(x = m2, y = y2)) +
+    plot_lm <- ggplot(dflm, aes(x = m2, y = y2)) +
       geom_smooth(method = "lm", se = FALSE, color = "lightgrey") +
       geom_segment(aes(xend = m2, yend = .fitted), alpha = .2) +
       geom_point(aes(color = abs(.resid))) + # size also mapped

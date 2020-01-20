@@ -101,7 +101,7 @@ ui <- dashboardPage(
       
       tabItem(tabName = "tab_3",
               HTML("
-                   h2>Cointegration Test</h2>
+                   <h2>Cointegration Test</h2>
                    <h4>We now proceed to run a cointegration test to confirm that there is a connection
                    between short and long-term interest rates. For this purpose, the Engle and Granger
                    cointegration test was run using y2 as a dependent variable.</h4>
