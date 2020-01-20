@@ -5,7 +5,7 @@ hello_g <- function() {
 
 runIR <- function() {
 
-dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse")
+dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly")
   
 for (x in dependencies) {
   if(x %in% rownames(installed.packages()) == T) {
@@ -33,9 +33,12 @@ for (x in dependencies) {
 
 # server side -------------------------------------------------------------
 server <- function(input, output) { 
-  output$distPlot <- renderPlot({
-    ggplot(data_gathered, aes(x=date, y=value, col = type)) +
+  output$distPlot <- renderPlotly({
+    
+    plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
       geom_line()
+    ggplotly(plot)
+    
   })
 }
   

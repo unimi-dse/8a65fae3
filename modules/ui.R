@@ -1,6 +1,7 @@
 library(shinydashboard)
 library(shiny)
 library(tidyverse)
+library(plotly)
 
 ui <- dashboardPage(
   
@@ -52,7 +53,7 @@ ui <- dashboardPage(
       
       tabItem(tabName = "tab_2",
               HTML("this is"),
-              fluidRow( plotOutput(outputId = "distPlot") )
+              fluidRow( plotlyOutput(outputId = "distPlot") )
               ),
       
       tabItem(tabName = "tab_3",
