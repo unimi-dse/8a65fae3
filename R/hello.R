@@ -30,7 +30,9 @@ for (x in dependencies) {
 server <- function(input, output) { 
   
   output$plot_1 <- renderPlot({
-    plot(iris)
+    iris %>%
+      ggplot(aes(Sepal.Length, Sepal.Width)) +
+      geom_point()
   })
   
 }
