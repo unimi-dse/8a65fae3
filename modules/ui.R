@@ -92,7 +92,7 @@ ui <- dashboardPage(
                        )
                 ),
               HTML("<h4>The results confirm the literature findings since the null hypothesis is 
-                   rejected at 5\% confidence level. Therefore it can be concluded that the spreads
+                   rejected at 5 percent confidence level. Therefore it can be concluded that the spreads
                    are integrated of order zero. This finding has relevant implications since the 
                    spread provides information about the expectations of future rates. In other words,
                    we can derive from the spread whether long-term rates will increase or drop in the
