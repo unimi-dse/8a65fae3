@@ -19,6 +19,21 @@ for (x in dependencies) {
   }
 }
 
+
+# test --------------------------------------------------------------------
+
+withConsoleRedirect <- function(containerId, expr) {
+  # Change type="output" to type="message" to catch stderr
+  # (messages, warnings, and errors) instead of stdout.
+  txt <- capture.output(results <- expr, type = "output")
+  if (length(txt) > 0) {
+    insertUI(paste0("#", containerId), where = "beforeEnd",
+             ui = paste0(txt, "\n", collapse = "")
+    )
+  }
+  results
+}
+
 # read data ---------------------------------------------------------------
   d <- getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
   data <- read_csv(d)
@@ -139,6 +154,15 @@ server <- function(input, output) {
       geom_line()
     ggplotly(plot)
   })
+  
+  observe({
+    invalidateLater(1000)
+    
+    withConsoleRedirect("console", {
+      str(cars)
+    })
+  })
+  
   
   
 }

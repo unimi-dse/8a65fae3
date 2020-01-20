@@ -121,7 +121,8 @@ ui <- dashboardPage(
                     <li>based on the ADF test, the two series are I(1)</li>
                     <li>their residuals from OLS are I(0) (reject null hypothesis in adf test).</li>
                     </ul></h4>
-                   ")
+                   "),
+              pre(id = "console")
               )
     )
   )
