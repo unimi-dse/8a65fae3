@@ -29,7 +29,7 @@ ui <- dashboardPage(
               HTML("
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates</h1>
-                   <h2>Author: Gregorio Saporito</h2><br>
+                   <h2>Author: Gregorio Saporito<br></h2>
                    <h4>The Expectation hypothesis of the term structure of interest 
                    rates states that long-term rates are influenced by the expectations
                    that investors have on future short-term rates. To assess the validity
