@@ -29,7 +29,7 @@ for (x in dependencies) {
 # server side -------------------------------------------------------------
 server <- function(input, output) { 
   output$distPlot <- renderPlot({
-    plot(iris)
+    plot(iris$Sepal.Length, iris$Sepal.Width)
   })
 }
   
