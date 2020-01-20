@@ -7,7 +7,7 @@ ui <- dashboardPage(
   dashboardSidebar(
     
     sidebarMenu(
-      menuItem(tabName = "tab_1", icon = icon("home")),
+      menuItem("", tabName = "tab_1", icon = icon("home")),
       menuItem("tab_2", tabName = "tab_2"), 
       menuItem("tab_3", tabName = "tab_3")
     )
