@@ -51,7 +51,7 @@ ui <- dashboardPage(
       
       tabItem(tabName = "tab_2",
               HTML("this is"),
-              plotOutput(outputId = "distPlot")
+              fluidRow( plotOutput(outputId = "distPlot") )
               ),
       
       tabItem(tabName = "tab_3",
