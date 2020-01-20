@@ -156,8 +156,6 @@ server <- function(input, output) {
   })
   
   observe({
-    invalidateLater(1000)
-    
     withConsoleRedirect("console", {
       str(cars)
     })
