@@ -21,13 +21,15 @@ ui <- dashboardPage(
         margin-bottom: 30px;
         margin-right: 30px;
         margin-left: 30px;
-        color:red;
       }
       '))),
 
     tabItems(
       tabItem(tabName = "tab_1",
-              HTML("<h1>hello world<h1>")),
+              HTML("
+                   <h1>Time Series Project<br>
+                   Analysis on the Term Structure of Interest Rates<h1>
+                   ")),
       tabItem(tabName = "tab_2",
               HTML("this is")),
       tabItem(tabName = "tab_3",
