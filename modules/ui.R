@@ -29,7 +29,9 @@ ui <- dashboardPage(
               HTML("
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates</h1>
-                   <h2>Author: <font color=\"#00ccff; font-style: italic\">Gregorio Saporito</font></h2>
+                   <h2>Author: <font color=\"#00ccff\">Gregorio Saporito</font></h2>
+                   <h3><font color=\"gray\">An analysis of US dollar LIBOR interbank rates,
+                   observed at monthly frequency, for rates spanning the period 1961-2008</font></h3>
                    <h4><br>The Expectation hypothesis of the term structure of interest 
                    rates states that long-term rates are influenced by the expectations
                    that investors have on future short-term rates. To assess the validity
@@ -46,8 +48,10 @@ ui <- dashboardPage(
                    this framework of the yield curve through an analysis of US dollar LIBOR 
                    interbank rates.</h4>
                    ")),
+      
       tabItem(tabName = "tab_2",
               HTML("this is")),
+      
       tabItem(tabName = "tab_3",
               HTML("Greg"))
     )
