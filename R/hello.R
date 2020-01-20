@@ -57,7 +57,7 @@ server <- function(input, output) {
   })
   
   output$table_1 <- renderPlot({    
-    table_1
+    grid.table(p_1)
   })
   
 }
