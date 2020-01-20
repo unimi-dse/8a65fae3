@@ -25,8 +25,6 @@ for (x in dependencies) {
   data_gathered <- data[,c("date", "m2", "y2")] %>%
     gather(key="type", value="value", -date) %>%
     mutate(type = as.factor(type))
-  
-  
 
 # adf tests --------------------------------------------------------------
   p <- adf.test(data$m2, nlag = 3)

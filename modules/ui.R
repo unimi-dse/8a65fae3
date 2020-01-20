@@ -3,6 +3,8 @@ library(shiny)
 library(tidyverse)
 library(plotly)
 library(shinycssloaders)
+library(gridExtra)
+library(grid)
 
 ui <- dashboardPage(
   
