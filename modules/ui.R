@@ -69,10 +69,10 @@ ui <- dashboardPage(
                    <h2>Interest Rates are I(1)</h2>"),
               fluidRow(
                 column(6,
-                  plotOutput("table_1")
+                  withSpinner(plotOutput("table_1"))
                 ),
                 column(6,
-                  plotOutput("table_2")
+                  withSpinner(plotOutput("table_2"))
                 )
               ),
               HTML("<h4>Firstly, the short-term interest rate m2 is analysed with the Augmented 
@@ -85,12 +85,11 @@ ui <- dashboardPage(
                    <h2>The Spreads are I(0)</h2>"),
               fluidRow(
                 column(6,
-                       plotOutput("table_3")
-                ),
+                       withSpinner(plotOutput("table_3"))
+                       ),
                 column(6,
-                       
+                       withSpinner(plotlyOutput(outputId = "spreadsplot"))
                 )
-              )
               ),
       
       tabItem(tabName = "tab_3",

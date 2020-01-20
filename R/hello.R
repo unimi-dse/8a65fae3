@@ -92,8 +92,14 @@ server <- function(input, output) {
     grid.table(q_1, theme= ttheme_default(base_size = 18) )
   })
   
-  output$table_3 <- renderPlot({ 
+  output$table_3 <- renderPlot({
     grid.table(z_1, theme= ttheme_default(base_size = 18) )
+  })
+  
+  output$spreadsplot <- renderPlotly({
+    plot <- ggplot(spreads, aes(x=date, y=spreads)) +
+      geom_line()
+    ggplotly(plot)
   })
   
 }
