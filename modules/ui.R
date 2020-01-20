@@ -53,7 +53,7 @@ ui <- dashboardPage(
       
       tabItem(tabName = "tab_2",
               HTML("this is"),
-              fluidRow( plotlyOutput(outputId = "distPlot") )
+              plotlyOutput(outputId = "distPlot") %>% withSpinner()
               ),
       
       tabItem(tabName = "tab_3",

@@ -5,7 +5,7 @@ hello_g <- function() {
 
 runIR <- function() {
 
-dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly")
+dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly", "shinycssloaders")
   
 for (x in dependencies) {
   if(x %in% rownames(installed.packages()) == T) {
