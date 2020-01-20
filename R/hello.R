@@ -42,49 +42,8 @@ withConsoleRedirect <- function(containerId, expr) {
     gather(key="type", value="value", -date) %>%
     mutate(type = as.factor(type))
 
-# adf tests --------------------------------------------------------------
-  p <- adf.test(data$m2, nlag = 3)
-  
-  p_1 <- data.frame(p$type1) %>%
-    mutate(type="no drift no trend ") %>% 
-    bind_rows(
-      data.frame(p$type2) %>%
-        mutate(type="with drift no trend")
-    ) %>%
-    bind_rows(
-      data.frame(p$type3) %>%
-        mutate(type="with drift and trend")
-    )
-  
-  q <- adf.test(data$y2, nlag = 3)
-  
-  q_1 <- data.frame(q$type1) %>%
-    mutate(type="no drift no trend ") %>% 
-    bind_rows(
-      data.frame(q$type2) %>%
-        mutate(type="with drift no trend")
-    ) %>%
-    bind_rows(
-      data.frame(q$type3) %>%
-        mutate(type="with drift and trend")
-    )
-  
   spreads <- data %>% 
     mutate(spreads = y2-m2)
-  
-  z <- adf.test(spreads$spreads, nlag = 3)
-  
-  z_1 <- data.frame(z$type1) %>%
-    mutate(type="no drift no trend ") %>% 
-    bind_rows(
-      data.frame(z$type2) %>%
-        mutate(type="with drift no trend")
-    ) %>%
-    bind_rows(
-      data.frame(z$type3) %>%
-        mutate(type="with drift and trend")
-    )
-  
 
 # cointegration test ------------------------------------------------------
   
@@ -134,13 +93,11 @@ server <- function(input, output) {
     })
   })
   
-  # output$table_1 <- renderPlot({    
-  #   grid.table(p_1, theme= ttheme_default(base_size = 18) )
-  # })
-  # 
-  # output$table_2 <- renderPlot({ 
-  #   grid.table(q_1, theme= ttheme_default(base_size = 18) )
-  # })
+  observe({
+    withConsoleRedirect("adfspreads", {
+      adf.test(spreads$spreads, nlag = 3)
+    })
+  })
   
   output$table_3 <- renderPlot({
     grid.table(z_1, theme= ttheme_default(base_size = 18) )

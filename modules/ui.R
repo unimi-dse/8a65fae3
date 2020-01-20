@@ -67,14 +67,6 @@ ui <- dashboardPage(
                    inversion of the yield curve occurred, leading to a scenario where short-term
                    investments had higher yields than long-term ones.</h4>
                    <h2>Interest Rates are I(1)</h2>"),
-              # fluidRow(
-              #   column(6,
-              #     withSpinner(plotOutput("table_1"))
-              #   ),
-              #   column(6,
-              #     withSpinner(plotOutput("table_2"))
-              #   )
-              # ),
               fluidRow(
                 column(6, pre(id = "adfm2")),
                 column(6, pre(id = "adfy2"))
@@ -89,7 +81,7 @@ ui <- dashboardPage(
                    <h2>The Spreads are I(0)</h2>"),
               fluidRow(
                 column(6,
-                       withSpinner(plotOutput("table_3"))
+                       pre(id = "adfspreads")
                        ),
                 column(6,
                        withSpinner(plotlyOutput("spreadsplot"))
