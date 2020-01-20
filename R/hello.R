@@ -31,7 +31,7 @@ for (x in dependencies) {
 # adf tests --------------------------------------------------------------
   p <- adf.test(data$m2, nlag = 3)
   
-  p <- data.frame(p$type1) %>%
+  p_1 <- data.frame(p$type1) %>%
     mutate(type="no drift no trend ") %>% 
     bind_rows(
       data.frame(p$type2) %>%
