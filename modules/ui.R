@@ -83,8 +83,14 @@ ui <- dashboardPage(
                    Therefore there are no reasons to say that y2 is I(0).
                    <br>As previous empirical findings suggest, interest rates are I(1).</h4>
                    <h2>The Spreads are I(0)</h2>"),
-                       withSpinner(plotOutput("table_3")),
+              fluidRow(
+                column(6,
+                       withSpinner(plotOutput("table_3"))
+                       ),
+                column(6,
                        withSpinner(plotlyOutput("spreadsplot"))
+                       )
+                )
               ),
       
       tabItem(tabName = "tab_3",
