@@ -74,7 +74,16 @@ ui <- dashboardPage(
                 column(6,
                   plotOutput("table_2")
                 )
-              )
+              ),
+              HTML("
+                   <h4>Firstly, the short-term interest rate m2 is analysed with the Augmented 
+                   Dickey-Fuller test. As can be seen from the ADF test output, the null hypothesis 
+                   cannot be rejected therefore we have no evidence to say that m2 is I(0). The 
+                   long term-interest rates are analysed with the same ADF test. Even in this case,
+                   we fail to reject the null hypothesis at 5\% confidence level. 
+                   Therefore there are no reasons to say that y2 is I(0).
+                   <br>As previous empirical findings suggest, interest rates are I(1).</h4>
+                   ")
               ),
       
       tabItem(tabName = "tab_3",
