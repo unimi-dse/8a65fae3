@@ -81,7 +81,16 @@ ui <- dashboardPage(
                    long term-interest rates are analysed with the same ADF test. Even in this case,
                    we fail to reject the null hypothesis at 5 percent confidence level. 
                    Therefore there are no reasons to say that y2 is I(0).
-                   <br>As previous empirical findings suggest, interest rates are I(1).</h4>")
+                   <br>As previous empirical findings suggest, interest rates are I(1).</h4>
+                   <h2>The Spreads are I(0)</h2>"),
+              fluidRow(
+                column(6,
+                       plotOutput("table_3")
+                ),
+                column(6,
+                       plotOutput("table_2")
+                )
+              )
               ),
       
       tabItem(tabName = "tab_3",

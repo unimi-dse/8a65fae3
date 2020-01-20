@@ -53,6 +53,22 @@ for (x in dependencies) {
         mutate(type="with drift and trend")
     )
   
+  spreads <- data %>% 
+    mutate(spreads = y2-m2)
+  
+  z <- adf.test(spreads$spreads, nlag = 3)
+  
+  z_1 <- data.frame(z$type1) %>%
+    mutate(type="no drift no trend ") %>% 
+    bind_rows(
+      data.frame(z$type2) %>%
+        mutate(type="with drift no trend")
+    ) %>%
+    bind_rows(
+      data.frame(z$type3) %>%
+        mutate(type="with drift and trend")
+    )
+  
   
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
@@ -69,11 +85,15 @@ server <- function(input, output) {
   })
   
   output$table_1 <- renderPlot({    
-    grid.table(p_1)
+    grid.table(p_1, theme= ttheme_default(base_size = 18) )
   })
   
-  output$table_2 <- renderPlot({    
-    grid.table(q_1)
+  output$table_2 <- renderPlot({ 
+    grid.table(q_1, theme= ttheme_default(base_size = 18) )
+  })
+  
+  output$table_3 <- renderPlot({ 
+    grid.table(z_1, theme= ttheme_default(base_size = 18) )
   })
   
 }
@@ -83,5 +103,4 @@ server <- function(input, output) {
   runApp( shinyApp(ui, server), launch.browser = T )
 
 }
-
 
