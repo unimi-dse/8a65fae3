@@ -9,8 +9,8 @@ ui <- dashboardPage(
   dashboardSidebar(
     
     sidebarMenu(
-      menuItem("tab_1", tabName = "tab_1"),
-      menuItem("tab_2", tabName = "tab_2"), 
+      menuItem("tab_1", tabName = "tab_1", icon=icon("home")),
+      menuItem("tab_2", tabName = "tab_2", icon=icon("chart-line")), 
       menuItem("tab_3", tabName = "tab_3")
     )
   ),
@@ -52,8 +52,17 @@ ui <- dashboardPage(
                    ")),
       
       tabItem(tabName = "tab_2",
-              HTML("this is"),
-              plotlyOutput(outputId = "distPlot") %>% withSpinner()
+              HTML("<h1>Data Inspection</h1>"),
+              withSpinner(plotlyOutput(outputId = "distPlot")),
+              HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
+                   to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
+                   to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
+                   inverted since long-term rates tend to lay above short-term ones. This suggests
+                   long-term rates have a larger yield due to a risk premium, in line with the 
+                   expectation hypothesis(Shiller R.J., 1979). Nevertheless, the presence of some
+                   outliers is worth noting. For example, during the 2007 financial crisis an 
+                   inversion of the yield curve occurred, leading to a scenario where short-term
+                   investments had higher yields than long-term ones.</h4>")
               ),
       
       tabItem(tabName = "tab_3",
