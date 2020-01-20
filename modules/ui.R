@@ -29,6 +29,7 @@ ui <- dashboardPage(
               HTML("
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates<h1>
+                   <h2>Author: Gregorio Saporito<h2>
                    ")),
       tabItem(tabName = "tab_2",
               HTML("this is")),
