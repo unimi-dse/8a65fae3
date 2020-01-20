@@ -27,7 +27,7 @@ ui <- dashboardPage(
     
     # css
     tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+      tags$link(rel = "stylesheet", type = "text/css", href = "https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/www/custom.css")
     ),
     
     tabItems(
