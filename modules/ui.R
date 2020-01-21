@@ -3,12 +3,10 @@ library(shiny)
 library(tidyverse)
 library(plotly)
 library(shinycssloaders)
-library(gridExtra)
-library(grid)
 
 ui <- dashboardPage(
-  
-  dashboardHeader(title = "TS Project"),
+    
+  dashboardHeader(title = "Time Series Project"),
   
   dashboardSidebar(
     
@@ -29,7 +27,10 @@ ui <- dashboardPage(
         margin-right: 60px;
         margin-left: 60px;
       }
-      '))),
+      ')),
+      tags$link(rel = "shortcut icon",
+                href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
+      ),
 
     tabItems(
       tabItem(tabName = "tab_1",
