@@ -134,7 +134,7 @@ server <- function(input, output) {
   
   observe({
     withConsoleRedirect("VEC", {
-      cajorls(cointtest)
+      cajorls(cointtest)$beta
     })
   })
   
