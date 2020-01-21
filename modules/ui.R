@@ -8,15 +8,11 @@ library(grid)
 
 ui <- dashboardPage(
   
-  fluidPage(
-    titlePanel(
-      title =
-        tags$link(rel = "icon", type = "image/gif", href = "https://guidetoiceland.is/image/389003/x/0/the-beautiful-waterfalls-of-south-iceland-seljalandsfoss-skogafoss-amp-gljufrabui-1.jpg"),
-      "My App"
-    )
-  ),
-  
-  dashboardHeader(title = "TS Project"),
+  dashboardHeader(title = "TS Project",
+                  tags$link(
+                    rel = "icon", type = "image/gif", href = "https://upload.wikimedia.org/wikipedia/it/0/04/Logo_Universit%C3%A0_degli_Studi_di_Milano.svg"
+                  )
+                  ),
   
   dashboardSidebar(
     
