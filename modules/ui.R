@@ -133,7 +133,7 @@ ui <- dashboardPage(
                    <br>Since the variables m2 and y2 are I(1) and cointegrated the vector error correction
                    term has to be included in the VAR. This leads to the following VEC estimates.</h4>
                    "),
-              pre(id="VEC"),
+              pre(id="VEC")
               )
     )
   )
