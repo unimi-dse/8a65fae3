@@ -67,7 +67,7 @@ withConsoleRedirect <- function(containerId, expr) {
   eval(parse(text = script))
 
 # server side -------------------------------------------------------------
-server <- function(input, output) { 
+server <- function(input, output) {
   
   output$distPlot <- renderPlotly({
     plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
@@ -128,13 +128,13 @@ server <- function(input, output) {
   
   observe({
     withConsoleRedirect("laglength", {
-      VARselect(mysample, lag.max = 10, type = "const")
+      print(VARselect(mysample, lag.max = 10, type = "const"))
     })
   })
   
   observe({
     withConsoleRedirect("VEC", {
-      cajorls(cointtest)
+      print(cajorls(cointtest))
     })
   })
   
