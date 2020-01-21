@@ -57,7 +57,7 @@ withConsoleRedirect <- function(containerId, expr) {
 # analysis ----------------------------------------------------------------
 
   mysample <- data[, c("m2", "y2")]
-  VARselect(mysample, lag.max = 10, type = "const")
+  # VARselect(mysample, lag.max = 10, type = "const")
   cointtest <- ca.jo(mysample, K=2, spec = "transitory", type="eigen")
   # cajorls(cointtest)
   
