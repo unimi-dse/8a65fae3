@@ -67,6 +67,14 @@ withConsoleRedirect <- function(containerId, expr) {
         mutate(type="with drift and trend")
     )
   
+
+# analysis ----------------------------------------------------------------
+
+  mysample <- data[, c("m2", "y2")]
+  VARselect(mysample, lag.max = 10, type = "const")
+  cointtest <- ca.jo(mysample, K=2, spec = "transitory", type="eigen")
+  cajorls(cointtest)
+  
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
                     ssl.verifypeer = FALSE)
@@ -134,14 +142,12 @@ server <- function(input, output) {
   
   observe({
     withConsoleRedirect("laglength", {
-      mysample <- data[, c("m2", "y2")]
       VARselect(mysample, lag.max = 10, type = "const")
     })
   })
   
   observe({
     withConsoleRedirect("VEC", {
-      cointtest <- ca.jo(mysample, K=2, spec = "transitory", type="eigen")
       cajorls(cointtest)
     })
   })
