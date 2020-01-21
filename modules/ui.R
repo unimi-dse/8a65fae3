@@ -56,7 +56,7 @@ ui <- dashboardPage(
       
       tabItem(tabName = "tab_2",
               HTML("<h2>Data Inspection</h2>"),
-              withSpinner(plotlyOutput(outputId = "distPlot")),
+              withSpinner(plotlyOutput(outputId = "distPlot"), type = 7),
               HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
                    to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
@@ -84,7 +84,7 @@ ui <- dashboardPage(
                        pre(id = "adfspreads")
                        ),
                 column(6,
-                       withSpinner(plotlyOutput("spreadsplot"))
+                       withSpinner(plotlyOutput("spreadsplot"), type = 7)
                        )
                 ),
               HTML("<h4>The results confirm the literature findings since the null hypothesis is 
@@ -104,10 +104,10 @@ ui <- dashboardPage(
                    "),
               fluidRow(
                 column(6,
-                       withSpinner(plotlyOutput("lm_plot"))
+                       withSpinner(plotlyOutput("lm_plot"), type = 7)
                 ),
                 column(6,
-                       withSpinner(plotlyOutput("lm_resid"))
+                       withSpinner(plotlyOutput("lm_resid"), type = 7)
                 )
               ),
               HTML("
