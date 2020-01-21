@@ -59,7 +59,7 @@ withConsoleRedirect <- function(containerId, expr) {
   mysample <- data[, c("m2", "y2")]
   VARselect(mysample, lag.max = 10, type = "const")
   cointtest <- ca.jo(mysample, K=2, spec = "transitory", type="eigen")
-  cajorls(cointtest)
+  cajorls(cointtest)$beta
   
 # source ui ---------------------------------------------------------------
   script <- getURL ("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/modules/ui.R",
