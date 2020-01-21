@@ -89,7 +89,7 @@ ui <- dashboardPage(
                        pre(id = "adfspreads")
                        ),
                 column(6,
-                       withSpinner(plotlyOutput("spreadsplot"), type = 7)
+                       plotlyOutput("spreadsplot")
                        )
                 ),
               HTML("<h4>The results confirm the literature findings since the null hypothesis is 
@@ -112,10 +112,10 @@ ui <- dashboardPage(
                    "),
               fluidRow(
                 column(6,
-                       withSpinner(plotlyOutput("lm_plot"), type = 7)
+                       plotlyOutput("lm_plot")
                 ),
                 column(6,
-                       withSpinner(plotlyOutput("lm_resid"), type = 7)
+                       plotlyOutput("lm_resid")
                 )
               ),
               HTML("
