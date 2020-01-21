@@ -131,7 +131,7 @@ server <- function(input, output) {
       VARselect(mysample, lag.max = 10, type = "const")
     })
   })
-  
+  Sys.sleep(5)
   observe({
     withConsoleRedirect("VEC", {
       cajorls(cointtest)$beta
