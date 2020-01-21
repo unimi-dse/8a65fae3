@@ -5,6 +5,7 @@ library(shiny)
 library(tidyverse)
 library(plotly)
 library(shinycssloaders)
+library(shinyanimate)
 
 ui <- dashboardPage(
     
