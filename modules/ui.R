@@ -118,7 +118,22 @@ ui <- dashboardPage(
                     <li>their residuals from OLS are I(0) (reject null hypothesis in adf test).</li>
                     </ul></h4>
                    "),
-              pre(id = "console")
+              pre(id = "console"),
+              HTML("
+                   <h2>Lag Length Criteria</h2>
+                   <h4>Before running the vector error correction estimates, the correct lag order is selected 
+                   based on the Schwarz information criterion.</h4>
+                   "),
+              pre(id="laglength"),
+              HTML("
+                   <h4>The SC criterion was chosen because it provides a consistent estimate as opposed to
+                   other criteria like the AIC. Our sample size of 568 observations can be considered 
+                   large enough for the SIC to be a consistent estimate. Therefore, the lag order 
+                   selected is 2 and this information will be used to tune the VEC model.
+                   <br>Since the variables m2 and y2 are I(1) and cointegrated the vector error correction
+                   term has to be included in the VAR. This leads to the following VEC estimates.</h4>
+                   "),
+              pre(id="VEC"),
               )
     )
   )

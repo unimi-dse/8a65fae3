@@ -7,7 +7,7 @@ hello_g <- function() {
 runIR <- function() {
 
 dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly", "shinycssloaders",
-                  "grid", "gridExtra", "aTSA", "vars", "broom")
+                  "aTSA", "vars", "broom", "urca")
   
 for (x in dependencies) {
   if(x %in% rownames(installed.packages()) == T) {
@@ -132,6 +132,19 @@ server <- function(input, output) {
     })
   })
   
+  observe({
+    withConsoleRedirect("laglength", {
+      mysample <- data[, c("m2", "y2")]
+      VARselect(mysample, lag.max = 10, type = "const")
+    })
+  })
+  
+  observe({
+    withConsoleRedirect("VEC", {
+      cointtest <- ca.jo(mysample, K=2, spec = "transitory", type="eigen")
+      cajorls(cointtest)
+    })
+  })
   
   
 }
