@@ -53,20 +53,6 @@ withConsoleRedirect <- function(containerId, expr) {
     mutate(date=data$date)
   
   adfred <- adf.test(dflm$.resid, nlag = 3)
-  
-  adfred$type1
-  
-  adfred_1 <- data.frame(adfred$type1) %>%
-    mutate(type="no drift no trend ") %>% 
-    bind_rows(
-      data.frame(adfred$type2) %>%
-        mutate(type="with drift no trend")
-    ) %>%
-    bind_rows(
-      data.frame(adfred$type3) %>%
-        mutate(type="with drift and trend")
-    )
-  
 
 # analysis ----------------------------------------------------------------
 
