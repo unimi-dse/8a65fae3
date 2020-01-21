@@ -61,7 +61,7 @@ ui <- dashboardPage(
               withAnim(),
               tags$div(id = 'effect_2',
               HTML("<h2>Data Inspection</h2>"),
-              withSpinner(plotlyOutput(outputId = "distPlot"), type = 7),
+              plotlyOutput(outputId = "distPlot"),
               HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
                    to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
