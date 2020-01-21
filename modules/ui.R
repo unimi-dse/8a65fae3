@@ -14,7 +14,8 @@ ui <- dashboardPage(
     sidebarMenu(
       menuItem("Home", tabName = "tab_1", icon=icon("home")),
       menuItem("Inspection", tabName = "tab_2", icon=icon("search")), 
-      menuItem("Cointegration", tabName = "tab_3", icon=icon("chart-line"))
+      menuItem("Analysis", tabName = "tab_3", icon=icon("chart-line")),
+      menuItem("Conclusion", tabName = "tab_4", icon=icon("calendar-check"))
     )
   ),
   dashboardBody(
@@ -24,8 +25,8 @@ ui <- dashboardPage(
       .tab-content {
         margin-top: 30px;
         margin-bottom: 30px;
-        margin-right: 50px;
-        margin-left: 50px;
+        margin-right: 60px;
+        margin-left: 60px;
       }
       '))),
 
@@ -37,20 +38,12 @@ ui <- dashboardPage(
                    <h2>Author: <font color=\"#00ccff\">Gregorio Saporito</font></h2>
                    <h3><font color=\"gray\">An analysis of US dollar LIBOR interbank rates,
                    observed at monthly frequency, for rates spanning the period 1961-2008</font></h3>
-                   <h4><br>The Expectation hypothesis of the term structure of interest 
-                   rates states that long-term rates are influenced by the expectations
-                   that investors have on future short-term rates. To assess the validity
-                   of this hypothesis a series of statistical analyses was run. Firstly, 
-                   a cointegration test between short and long-term interest rates was run.
-                   Subsequently, a vector error correction estimate, a Granger causality test,
-                   and impulse response analysis were run to verify whether long-term rates
-                   anticipate future movements of short rates. This research topic has
-                   been extensively explored due to the level of insight that it could 
-                   provide to central banks. Central banks mostly rely on short-term financial
-                   instruments for the implementation of monetary policies. A better understanding
-                   of the relations between short and long-term rates could help central banks
-                   implement more effective policies. This research aims to empirically confirm
-                   this framework of the yield curve through an analysis of US dollar LIBOR 
+                   <h4><br>This research topic has been extensively explored due to the level 
+                   of insight that it could provide to central banks. Central banks mostly rely on
+                   short-term financial instruments for the implementation of monetary policies. 
+                   A better understanding of the relations between short and long-term rates could 
+                   help central banks implement more effective policies. This research aims to 
+                   empirically confirm this framework of the yield curve through an analysis of US dollar LIBOR 
                    interbank rates.</h4>
                    ")),
       
@@ -134,7 +127,23 @@ ui <- dashboardPage(
                    term has to be included in the VAR. This leads to the following VEC estimates.</h4>
                    "),
               pre(id="VEC")
-              )
+              ),
+      tabItem(tabName = "tab_4",
+              
+              HTML("
+                    <h2>Conclusions</h2>
+                    <h4>The main findings of this report are as follows:<br>
+                    <ul>
+                    <li>US Dollar LIBOR interbank rates with maturity 2 months (m2) 
+                    and 2 years (y2) are I(1)</li>
+                    <li>The corresponding spread is I(0)</li>
+                    <li>m2 and y2 are cointegrated</li>
+                    </ul>
+                    The outcomes seem to suggest that the expectation hypothesis holds for
+                    the US Dollar LIBOR interbank rates m2 and y2</h4>
+                   ")
+        
+      )
     )
   )
 )
