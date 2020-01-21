@@ -8,7 +8,15 @@ library(grid)
 
 ui <- dashboardPage(
   
-  dashboardHeader(title = "TS Project"),
+  dashboardHeader(title = "TS Project",
+                  
+                  titlePanel(
+                    title =
+                      tags$link(rel = "icon", type = "image/gif", href = "https://guidetoiceland.is/image/389003/x/0/the-beautiful-waterfalls-of-south-iceland-seljalandsfoss-skogafoss-amp-gljufrabui-1.jpg"),
+                    "My App"
+                  )
+                  
+                  ),
   
   dashboardSidebar(
     
@@ -30,12 +38,6 @@ ui <- dashboardPage(
         margin-left: 60px;
       }
       '))),
-    
-    titlePanel(
-      title =
-        tags$link(rel = "icon", type = "image/gif", href = "https://guidetoiceland.is/image/389003/x/0/the-beautiful-waterfalls-of-south-iceland-seljalandsfoss-skogafoss-amp-gljufrabui-1.jpg"),
-      "My App"
-    ),
 
     tabItems(
       tabItem(tabName = "tab_1",
