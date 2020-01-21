@@ -8,13 +8,13 @@ library(grid)
 
 ui <- dashboardPage(
   
-  titlePanel(
-    title =
-      tags$link(rel = "icon", type = "image/gif", href = "https://upload.wikimedia.org/wikipedia/it/0/04/Logo_Universit%C3%A0_degli_Studi_di_Milano.svg"),
-    "Time Series Project"
-  ),
+  dashboardHeader(title="TS Project",
+                  titlePanel(
+                    title =
+                      tags$link(rel = "icon", type = "image/gif", href = "https://upload.wikimedia.org/wikipedia/it/0/04/Logo_Universit%C3%A0_degli_Studi_di_Milano.svg"),
+                    "Time Series Project"
+                  )),
   
-  dashboardHeader(title="TS Project"),
   dashboardSidebar(
     
     sidebarMenu(
