@@ -67,7 +67,19 @@ withConsoleRedirect <- function(containerId, expr) {
   eval(parse(text = script))
 
 # server side -------------------------------------------------------------
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  
+  output$menu <- renderMenu({
+    
+  sidebarMenu(id="tabs",
+              menuItem("Home", tabName = "tab_1", icon=icon("home")),
+              menuItem("Inspection", tabName = "tab_2", icon=icon("search")),
+              menuItem("Analysis", tabName = "tab_3", icon=icon("chart-line")),
+              menuItem("Conclusion", tabName = "tab_4", icon=icon("calendar-check"))
+              )
+    })
+  
   
   output$distPlot <- renderPlotly({
     plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
@@ -138,6 +150,18 @@ server <- function(input, output) {
     })
   })
   
+  observeEvent(input$tabs,{
+        startAnim(session, 'effect_1', 'slideInUp')
+    })
+  observeEvent(input$tabs,{
+    startAnim(session, 'effect_2', 'slideInUp')
+  })
+  observeEvent(input$tabs,{
+    startAnim(session, 'effect_3', 'slideInUp')
+  })
+  observeEvent(input$tabs,{
+    startAnim(session, 'effect_4', 'slideInUp')
+  })
   
 }
   

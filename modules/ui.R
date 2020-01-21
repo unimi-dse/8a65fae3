@@ -1,3 +1,5 @@
+if(interactive()){
+
 library(shinydashboard)
 library(shiny)
 library(tidyverse)
@@ -10,13 +12,10 @@ ui <- dashboardPage(
   
   dashboardSidebar(
     
-    sidebarMenu(
-      menuItem("Home", tabName = "tab_1", icon=icon("home")),
-      menuItem("Inspection", tabName = "tab_2", icon=icon("search")), 
-      menuItem("Analysis", tabName = "tab_3", icon=icon("chart-line")),
-      menuItem("Conclusion", tabName = "tab_4", icon=icon("calendar-check"))
-    )
+    sidebarMenuOutput("menu")
+    
   ),
+  
   dashboardBody(
     
     # css
@@ -27,6 +26,9 @@ ui <- dashboardPage(
         margin-right: 60px;
         margin-left: 60px;
       }
+      .load7 .loader {
+      color: #00ccff !important;
+      }
       ')),
       tags$link(rel = "shortcut icon",
                 href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
@@ -34,6 +36,9 @@ ui <- dashboardPage(
 
     tabItems(
       tabItem(tabName = "tab_1",
+              withAnim(),
+              tags$div(id = 'effect_1',
+                       
               HTML("
                    <h1>Time Series Project<br>
                    Analysis on the Term Structure of Interest Rates</h1>
@@ -47,9 +52,13 @@ ui <- dashboardPage(
                    help central banks implement more effective policies. This research aims to 
                    empirically confirm this framework of the yield curve through an analysis of US dollar LIBOR 
                    interbank rates.</h4>
-                   ")),
+                   "))
+      ),
+              
       
       tabItem(tabName = "tab_2",
+              withAnim(),
+              tags$div(id = 'effect_2',
               HTML("<h2>Data Inspection</h2>"),
               withSpinner(plotlyOutput(outputId = "distPlot"), type = 7),
               HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
@@ -88,9 +97,12 @@ ui <- dashboardPage(
                    spread provides information about the expectations of future rates. In other words,
                    we can derive from the spread whether long-term rates will increase or drop in the
                    future - provided that the expectation theory holds.</h4>")
+              )
               ),
       
       tabItem(tabName = "tab_3",
+              withAnim(),
+              tags$div(id = 'effect_3',
               HTML("
                    <h2>Cointegration Test</h2>
                    <h4>We now proceed to run a cointegration test to confirm that there is a connection
@@ -129,8 +141,11 @@ ui <- dashboardPage(
                    term has to be included in the VAR. This leads to the following VEC estimates.</h4>
                    "),
               pre(id="VEC")
+              )
               ),
       tabItem(tabName = "tab_4",
+              withAnim(),
+              tags$div(id = 'effect_4',
               
               HTML("
                     <h2>Conclusions</h2>
@@ -144,8 +159,11 @@ ui <- dashboardPage(
                     The outcomes seem to suggest that the expectation hypothesis holds for
                     the US Dollar LIBOR interbank rates m2 and y2</h4>
                    ")
+              )
         
       )
     )
   )
 )
+
+}
