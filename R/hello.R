@@ -1,8 +1,13 @@
+
+#' Function printing "Hello World this is Greg"
+#'
 #' @export
 hello_g <- function() {
   print("Hello, world! This is Greg")
 }
 
+#' Shiny app with exploratory analysis of the term structure of interest rates
+#'
 #' @export
 runIR <- function() {
 
