@@ -14,20 +14,10 @@ hello_g <- function() {
 #' 
 #' @export
 runIR <- function() {
-
-dependencies <- c("shiny", "shinydashboard", "RCurl", "tidyverse", "plotly", "shinycssloaders",
-                  "aTSA", "vars", "broom", "urca", "shinyanimate")
   
-for (x in dependencies) {
-  if(x %in% rownames(installed.packages()) == T) {
-    library(x, character.only = T)
-  } else {
-    install.packages(x)
-    library(x, character.only = T)
-    Sys.sleep(5)
-  }
-}
-
+# remember to add Inst/extdata use Sample Package
+# inst/shiny
+# to read csv use this path system.file("shiny/sampleGUI", package = "sample"))
 
 # test --------------------------------------------------------------------
 

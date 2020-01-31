@@ -5,6 +5,30 @@ Version: 0.1.0
 Author: Gregorio Saporito
 Maintainer: Gregorio Saporito <gregsap@hotmail.it>
 Description: The purpose of this package is to run an analysys on the term structure of interest rates
+Depends:
+    shiny,
+    shinydashboard,
+    RCurl,
+    tidyverse,
+    plotly,
+    shinycssloaders,
+    aTSA,
+    vars,
+    broom,
+    urca,
+    shinyanimate
+Imports:
+    shiny,
+    shinydashboard,
+    RCurl,
+    tidyverse,
+    plotly,
+    shinycssloaders,
+    aTSA,
+    vars,
+    broom,
+    urca,
+    shinyanimate
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
