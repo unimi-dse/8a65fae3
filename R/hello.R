@@ -7,7 +7,11 @@ hello_g <- function() {
 }
 
 #' Shiny app with exploratory analysis of the term structure of interest rates
+#' 
+#' The function works with no arguments.
 #'
+#' @return Runs the Shiny app retreiving the data, running the analysis and showing the report with interactive visualisations.
+#' 
 #' @export
 runIR <- function() {
 
