@@ -1,11 +1,6 @@
+library(shinydashboard)
+
 if(interactive()){
-  
-  library(shinydashboard)
-  library(shiny)
-  library(tidyverse)
-  library(plotly)
-  library(shinycssloaders)
-  library(shinyanimate)
   
   ui <- dashboardPage(
     
@@ -37,7 +32,7 @@ if(interactive()){
       
       tabItems(
         tabItem(tabName = "tab_1",
-                withAnim(),
+                shinyanimate::withAnim(),
                 tags$div(id = 'effect_1',
                          
                          HTML("
@@ -58,10 +53,10 @@ if(interactive()){
         
         
         tabItem(tabName = "tab_2",
-                withAnim(),
+                shinyanimate::withAnim(),
                 tags$div(id = 'effect_2',
                          HTML("<h2>Data Inspection</h2>"),
-                         plotlyOutput(outputId = "distPlot"),
+                         plotly::plotlyOutput(outputId = "distPlot"),
                          HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
                    to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
@@ -89,7 +84,7 @@ if(interactive()){
                                   pre(id = "adfspreads")
                            ),
                            column(6,
-                                  plotlyOutput("spreadsplot")
+                                  plotly::plotlyOutput("spreadsplot")
                            )
                          ),
                          HTML("<h4>The results confirm the literature findings since the null hypothesis is 
@@ -102,7 +97,7 @@ if(interactive()){
         ),
         
         tabItem(tabName = "tab_3",
-                withAnim(),
+                shinyanimate::withAnim(),
                 tags$div(id = 'effect_3',
                          HTML("
                    <h2>Cointegration Test</h2>
@@ -112,10 +107,10 @@ if(interactive()){
                    "),
                          fluidRow(
                            column(6,
-                                  plotlyOutput("lm_plot")
+                                  plotly::plotlyOutput("lm_plot")
                            ),
                            column(6,
-                                  plotlyOutput("lm_resid")
+                                  plotly::plotlyOutput("lm_resid")
                            )
                          ),
                          HTML("
@@ -145,7 +140,7 @@ if(interactive()){
                 )
         ),
         tabItem(tabName = "tab_4",
-                withAnim(),
+                shinyanimate::withAnim(),
                 tags$div(id = 'effect_4',
                          
                          HTML("

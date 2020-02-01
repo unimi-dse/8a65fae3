@@ -4,14 +4,18 @@
 #'
 #' @return Runs the Shiny app retreiving the data, running the analysis and showing the report with interactive visualisations.
 #' 
+#' Dataset term_structure
+#'
+#' This is a dataset containing LIBOR interbank interest rates
+#'
+#' @name term_structure
+#'
+#' @section term_structure.csv
+#' 
 #' @export
 runIR <- function() {
-
-# tidyverse used often
-  library(tidyverse)
-
+  
 # run app -----------------------------------------------------------------
   shiny::runApp(system.file("shiny/IR", package = "interestrates"), launch.browser = T)
 
 }
-

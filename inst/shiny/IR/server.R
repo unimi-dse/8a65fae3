@@ -1,3 +1,7 @@
+library(shinydashboard)
+library(tidyverse)
+
+# function to show console output in shiny
 withConsoleRedirect <- function(containerId, expr) {
   # Change type="output" to type="message" to catch stderr
   # (messages, warnings, and errors) instead of stdout.
@@ -11,8 +15,9 @@ withConsoleRedirect <- function(containerId, expr) {
 }
 
 # read data ---------------------------------------------------------------
-d <- RCurl::getURL("https://raw.githubusercontent.com/unimi-dse/8a65fae3/master/data/term_structure.csv")
-data <- read_csv(d)
+fpath <- system.file("extdata", "term_structure.csv", package="interestrates")
+
+data <- readr::read_csv(fpath)
 
 data_gathered <- data[,c("date", "m2", "y2")] %>%
   gather(key="type", value="value", -date) %>%
@@ -50,10 +55,10 @@ server <- function(input, output, session) {
   })
   
   
-  output$distPlot <- renderPlotly({
+  output$distPlot <- plotly::renderPlotly({
     plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
       geom_line()
-    ggplotly(plot)
+    plotly::ggplotly(plot)
   })
   
   observe({
@@ -78,14 +83,14 @@ server <- function(input, output, session) {
     gridExtra::grid.table(z_1, theme= ttheme_default(base_size = 18) )
   })
   
-  output$spreadsplot <- renderPlotly({
+  output$spreadsplot <- plotly::renderPlotly({
     plot <- ggplot(spreads, aes(x=date, y=spreads)) +
       geom_line()
-    ggplotly(plot)
+    plotly::ggplotly(plot)
   })
   
-  output$lm_plot <- renderPlotly({
-    ggplotly(
+  output$lm_plot <- plotly::renderPlotly({
+    plotly::ggplotly(
       ggplot(dflm, aes(x = m2, y = y2)) +
         geom_line(aes(y=.fitted), color="lightgrey") +
         geom_segment(aes(xend = m2, yend = .fitted), alpha = .2) +
@@ -95,10 +100,10 @@ server <- function(input, output, session) {
     )
   })
   
-  output$lm_resid <- renderPlotly({
+  output$lm_resid <- plotly::renderPlotly({
     plot <- ggplot(dflm, aes(x = date, y = .resid)) + 
       geom_line()
-    ggplotly(plot)
+    plotly::ggplotly(plot)
   })
   
   observe({
@@ -120,16 +125,16 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$tabs,{
-    startAnim(session, 'effect_1', 'slideInUp')
+    shinyanimate::startAnim(session, 'effect_1', 'slideInUp')
   })
   observeEvent(input$tabs,{
-    startAnim(session, 'effect_2', 'slideInUp')
+    shinyanimate::startAnim(session, 'effect_2', 'slideInUp')
   })
   observeEvent(input$tabs,{
-    startAnim(session, 'effect_3', 'slideInUp')
+    shinyanimate::startAnim(session, 'effect_3', 'slideInUp')
   })
   observeEvent(input$tabs,{
-    startAnim(session, 'effect_4', 'slideInUp')
+    shinyanimate::startAnim(session, 'effect_4', 'slideInUp')
   })
   
 }

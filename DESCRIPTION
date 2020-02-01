@@ -4,8 +4,19 @@ Title: Interest rates analysis
 Version: 0.1.0
 Author: Gregorio Saporito
 Maintainer: Gregorio Saporito <gregsap@hotmail.it>
-Description: The purpose of this package is to run an analysys on the term structure of interest rates
-Imports: shiny, shinydashboard, RCurl, tidyverse, plotly, shinycssloaders, aTSA, vars, broom, urca, shinyanimate
+Description: This package incorporates a Shiny app to explore the term structure of
+    LIBOR interbank rates in the US. The data is loaded from the csv file term_structure.
+Imports:
+    shiny (>= 1.4.0),
+    shinydashboard (>= 0.7.1),
+    tidyverse (>= 1.3.0),
+    plotly (>= 4.9.1),
+    shinycssloaders (>= 0.3),
+    aTSA (>= 3.1.2),
+    vars (>= 1.5-3),
+    broom (>= 0.5.4),
+    urca (>= 1.3-0),
+    shinyanimate (>= 0.3.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

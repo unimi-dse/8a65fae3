@@ -1,17 +1,15 @@
 # 8a65fae3
 
-# Test Package
+# Interest Rates Package
 
-Testing if my package works
+The package has a Shiny app to explore the term structure of LIBOR interbank rates.
+Data is loaded from the csv file term_structure.
 
 ## Installation
 
 ```R
-# Tirst install the R package "devtools" if not installed
+# First install the R package "devtools" if not installed
 devtools::install_github('unimi-dse/8a65fae3')
-
-# Then install the R package "shiny" if not installed
-library(shiny)
 ```
 
 ## Usage
@@ -22,10 +20,8 @@ Load the package
 require(interestrates)
 ```
 
-The function of the package is `hello_g()` and prints _"Hello, world! This is Greg"_
-The other function is `runIR()` and runs a Shiny app
+The function of the package is `runIR()` and is run without arguments.
 
 ```R
-hello_g()
 runIR()
 ```
