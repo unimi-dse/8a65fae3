@@ -7,6 +7,9 @@
 #' @export
 runIR <- function() {
 
+# tidyverse used often
+  library(tidyverse)
+
 # run app -----------------------------------------------------------------
   shiny::runApp(system.file("shiny/IR", package = "interestrates"), launch.browser = T)
 
