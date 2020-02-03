@@ -44,6 +44,9 @@ cointtest <- urca::ca.jo(mysample, K=2, spec = "transitory", type="eigen")
 
 server <- function(input, output, session) {
   
+  Sys.sleep(2)
+  waiter_hide()
+  
   output$menu <- renderMenu({
     
     sidebarMenu(id="tabs",
@@ -54,14 +57,11 @@ server <- function(input, output, session) {
     )
   })
   
-  
   output$distPlot <- plotly::renderPlotly({
     plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
       geom_line()
     plotly::ggplotly(plot)
   })
-  
-  outputOptions(output, "distPlot", suspendWhenHidden = FALSE)
   
   observe({
     withConsoleRedirect("adfm2", {
@@ -87,8 +87,6 @@ server <- function(input, output, session) {
     plotly::ggplotly(plot)
   })
   
-  outputOptions(output, "spreadsplot", suspendWhenHidden = FALSE)
-  
   output$lm_plot <- plotly::renderPlotly({
     plotly::ggplotly(
       ggplot(dflm, aes(x = m2, y = y2)) +
@@ -100,15 +98,11 @@ server <- function(input, output, session) {
     )
   })
   
-  outputOptions(output, "lm_plot", suspendWhenHidden = FALSE)
-  
   output$lm_resid <- plotly::renderPlotly({
     plot <- ggplot(dflm, aes(x = date, y = .resid)) + 
       geom_line()
     plotly::ggplotly(plot)
   })
-  
-  outputOptions(output, "lm_resid", suspendWhenHidden = FALSE)
   
   observe({
     withConsoleRedirect("console", {
@@ -140,8 +134,5 @@ server <- function(input, output, session) {
   observeEvent(input$tabs,{
     shinyanimate::startAnim(session, 'effect_4', 'slideInUp')
   })
-  
-  Sys.sleep(2)
-  waiter_hide()
   
 }

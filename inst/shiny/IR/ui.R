@@ -3,11 +3,7 @@ library(waiter)
 
 if(interactive()){
   
-  ui <- fluidPage(
-    
-    use_waiter(include_js = FALSE), # do not include js
-    
-    dashboardPage(
+  ui <- dashboardPage(
     
     dashboardHeader(title = "Time Series Project"),
     
@@ -27,6 +23,9 @@ if(interactive()){
         tags$link(rel = "shortcut icon",
                   href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
       ),
+      
+      use_waiter(),
+      waiter_show_on_load(html = spin_flower()), # will show on load
       
       tabItems(
         tabItem(tabName = "tab_1",
@@ -158,8 +157,6 @@ if(interactive()){
         )
       )
     )
-  ),
-  waiter_show_on_load(html = spin_flower()) # place at the bottom
   )
   
 }
