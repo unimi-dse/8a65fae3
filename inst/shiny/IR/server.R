@@ -15,9 +15,20 @@ withConsoleRedirect <- function(containerId, expr) {
 }
 
 # read data ---------------------------------------------------------------
-fpath <- system.file("extdata", "term_structure.csv", package="interestrates")
 
-data <- readr::read_csv(fpath)
+# fpath <- system.file("extdata", "term_structure.csv", package="interestrates")
+# 
+# data <- readr::read_csv(fpath)
+# 
+# data_gathered <- data[,c("date", "m2", "y2")] %>%
+#   gather(key="type", value="value", -date) %>%
+#   mutate(type = as.factor(type))
+# 
+# spreads <- data %>% 
+#   mutate(spreads = y2-m2)
+
+# new approach to reading data
+data <- term_structure
 
 data_gathered <- data[,c("date", "m2", "y2")] %>%
   gather(key="type", value="value", -date) %>%
