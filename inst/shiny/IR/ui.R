@@ -1,8 +1,13 @@
 library(shinydashboard)
+library(waiter)
 
 if(interactive()){
   
-  ui <- dashboardPage(
+  ui <- fluidPage(
+    
+    use_waiter(include_js = FALSE), # do not include js
+    
+    dashboardPage(
     
     dashboardHeader(title = "Time Series Project"),
     
@@ -153,6 +158,8 @@ if(interactive()){
         )
       )
     )
+  ),
+  waiter_show_on_load(html = spin_flower()) # place at the bottom
   )
   
 }

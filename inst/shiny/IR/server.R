@@ -1,5 +1,6 @@
 library(shinydashboard)
 library(tidyverse)
+library(waiter)
 
 # function to show console output in shiny
 withConsoleRedirect <- function(containerId, expr) {
@@ -60,6 +61,8 @@ server <- function(input, output, session) {
     plotly::ggplotly(plot)
   })
   
+  outputOptions(output, "distPlot", suspendWhenHidden = FALSE)
+  
   observe({
     withConsoleRedirect("adfm2", {
       aTSA::adf.test(data$m2, nlag = 3)
@@ -78,15 +81,13 @@ server <- function(input, output, session) {
     })
   })
   
-  output$table_3 <- renderPlot({
-    gridExtra::grid.table(z_1, theme= ttheme_default(base_size = 18) )
-  })
-  
   output$spreadsplot <- plotly::renderPlotly({
     plot <- ggplot(spreads, aes(x=date, y=spreads)) +
       geom_line()
     plotly::ggplotly(plot)
   })
+  
+  outputOptions(output, "spreadsplot", suspendWhenHidden = FALSE)
   
   output$lm_plot <- plotly::renderPlotly({
     plotly::ggplotly(
@@ -99,11 +100,15 @@ server <- function(input, output, session) {
     )
   })
   
+  outputOptions(output, "lm_plot", suspendWhenHidden = FALSE)
+  
   output$lm_resid <- plotly::renderPlotly({
     plot <- ggplot(dflm, aes(x = date, y = .resid)) + 
       geom_line()
     plotly::ggplotly(plot)
   })
+  
+  outputOptions(output, "lm_resid", suspendWhenHidden = FALSE)
   
   observe({
     withConsoleRedirect("console", {
@@ -135,5 +140,8 @@ server <- function(input, output, session) {
   observeEvent(input$tabs,{
     shinyanimate::startAnim(session, 'effect_4', 'slideInUp')
   })
+  
+  Sys.sleep(2)
+  waiter_hide()
   
 }
