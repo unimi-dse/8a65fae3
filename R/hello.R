@@ -7,14 +7,10 @@
 #' Dataset term_structure
 #'
 #' This is a dataset containing LIBOR interbank interest rates
-#'
-#' @name term_structure
-#'
-#' @section term_structure.csv
 #' 
 #' @export
 runIR <- function() {
-  
+
 # run app -----------------------------------------------------------------
   shiny::runApp(system.file("shiny/IR", package = "interestrates"), launch.browser = T)
 
