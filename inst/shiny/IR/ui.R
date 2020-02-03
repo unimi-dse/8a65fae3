@@ -15,19 +15,12 @@ if(interactive()){
     dashboardBody(
       
       # css
-      tags$head(tags$style(HTML('
-      .tab-content {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        margin-right: 60px;
-        margin-left: 60px;
-      }
-      .load7 .loader {
-      color: #00ccff !important;
-      }
-      ')),
-                tags$link(rel = "shortcut icon",
-                          href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
+      tags$head(
+        
+        tags$link(rel = "stylesheet", type = "text/css", href = "custom.css"),
+        
+        tags$link(rel = "shortcut icon",
+                  href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
       ),
       
       tabItems(
