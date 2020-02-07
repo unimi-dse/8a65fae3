@@ -45,7 +45,9 @@ if(interactive()){
                    help central banks implement more effective policies. This research aims to 
                    empirically confirm this framework of the yield curve through an analysis of US dollar LIBOR 
                    interbank rates.</h4>
-                   "))
+                   <h4><br>The term_structure dataset can be downloaded by clicking on the button below.</h4>
+                   "),
+                         downloadButton('download',"Download the data"))
         ),
         
         

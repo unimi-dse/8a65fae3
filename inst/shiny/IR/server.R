@@ -122,6 +122,13 @@ server <- function(input, output, session) {
     })
   })
   
+  output$download <- downloadHandler(
+    filename = function(){"term_structure.csv"}, 
+    content = function(fname){
+      write.csv(term_structure, fname)
+    }
+  )
+  
   observeEvent(input$tabs,{
     shinyanimate::startAnim(session, 'effect_1', 'slideInUp')
   })
