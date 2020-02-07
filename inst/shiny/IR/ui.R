@@ -56,8 +56,9 @@ if(interactive()){
                 shinyanimate::withAnim(),
                 tags$div(id = 'effect_2',
                          HTML("<h2>Data Inspection</h2>"),
-                         plotly::plotlyOutput(outputId = "distPlot"),
-                         
+                         shinyWidgets::addSpinner(
+                          plotly::plotlyOutput(outputId = "distPlot")
+                         ),
                          HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
                    to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
@@ -85,7 +86,9 @@ if(interactive()){
                                   pre(id = "adfspreads")
                            ),
                            column(6,
-                                  plotly::plotlyOutput("spreadsplot")
+                                  shinyWidgets::addSpinner(
+                                    plotly::plotlyOutput("spreadsplot")
+                                  )
                            )
                          ),
                          HTML("<h4>The results confirm the literature findings since the null hypothesis is 
@@ -108,10 +111,14 @@ if(interactive()){
                    "),
                          fluidRow(
                            column(6,
-                                  plotly::plotlyOutput("lm_plot")
+                                  shinyWidgets::addSpinner(
+                                    plotly::plotlyOutput("lm_plot")
+                                  )
                            ),
                            column(6,
-                                  plotly::plotlyOutput("lm_resid")
+                                  shinyWidgets::addSpinner(
+                                    plotly::plotlyOutput("lm_resid")
+                                  )
                            )
                          ),
                          HTML("
