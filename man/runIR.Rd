@@ -8,11 +8,10 @@ runIR()
 }
 \value{
 Runs the Shiny app retreiving the data, running the analysis and showing the report with interactive visualisations.
-
-Dataset term_structure
-
-This is a dataset containing LIBOR interbank interest rates
 }
 \description{
-The function works with no arguments.
+The function works with no arguments. The function depends on the dataset \code{\link{term_structure}}
+}
+\seealso{
+\code{\link{term_structure}}
 }
