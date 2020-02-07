@@ -1,6 +1,4 @@
-library(shinydashboard)
-library(tidyverse)
-library(waiter)
+## server.R ##
 
 # function to show console output in shiny
 withConsoleRedirect <- function(containerId, expr) {
@@ -19,19 +17,23 @@ withConsoleRedirect <- function(containerId, expr) {
 # clean data --------------------------------------------------------------
 data <- term_structure
 
-data_gathered <- data[,c("date", "m2", "y2")] %>%
-  gather(key="type", value="value", -date) %>%
-  mutate(type = as.factor(type))
+data_gathered <- dplyr::mutate(
+  tidyr::gather(
+    data[,c("date", "m2", "y2")],
+    key="type", value="value", -date
+    ),
+  type = as.factor(type)
+  )
 
-spreads <- data %>% 
-  mutate(spreads = y2-m2)
+spreads <- dplyr::mutate(data, spreads = y2-m2)
 
 # cointegration test ------------------------------------------------------
 
 # linear regression model
 mod <- lm(y2 ~ m2, data = data)
-dflm <- broom::augment(mod) %>%
-  mutate(date=data$date)
+dflm <- dplyr::mutate(
+  broom::augment(mod),
+  date=data$date)
 
 adfred <- aTSA::adf.test(dflm$.resid, nlag = 3)
 
@@ -45,22 +47,25 @@ cointtest <- urca::ca.jo(mysample, K=2, spec = "transitory", type="eigen")
 server <- function(input, output, session) {
   
   Sys.sleep(2)
-  waiter_hide()
+  waiter::waiter_hide()
   
-  output$menu <- renderMenu({
+  output$menu <- shinydashboard::renderMenu({
     
-    sidebarMenu(id="tabs",
-                menuItem("Home", tabName = "tab_1", icon=icon("home")),
-                menuItem("Inspection", tabName = "tab_2", icon=icon("search")),
-                menuItem("Analysis", tabName = "tab_3", icon=icon("chart-line")),
-                menuItem("Conclusion", tabName = "tab_4", icon=icon("calendar-check"))
+    shinydashboard::sidebarMenu(id="tabs",
+                                shinydashboard::menuItem("Home", tabName = "tab_1", icon=icon("home")),
+                                shinydashboard::menuItem("Inspection", tabName = "tab_2", icon=icon("search")),
+                                shinydashboard::menuItem("Analysis", tabName = "tab_3", icon=icon("chart-line")),
+                                shinydashboard::menuItem("Conclusion", tabName = "tab_4", icon=icon("calendar-check"))
     )
   })
   
   output$distPlot <- plotly::renderPlotly({
-    plot <- ggplot(data_gathered, aes(x=date, y=value, col = type)) +
-      geom_line()
+    
+    plot <- ggplot2::ggplot(data_gathered, ggplot2::aes(x=date, y=value, col = type)) +
+      ggplot2::geom_line()
+    
     plotly::ggplotly(plot)
+    
   })
   
   observe({
@@ -82,25 +87,25 @@ server <- function(input, output, session) {
   })
   
   output$spreadsplot <- plotly::renderPlotly({
-    plot <- ggplot(spreads, aes(x=date, y=spreads)) +
-      geom_line()
+    plot <- ggplot2::ggplot(spreads, ggplot2::aes(x=date, y=spreads)) +
+      ggplot2::geom_line()
     plotly::ggplotly(plot)
   })
   
   output$lm_plot <- plotly::renderPlotly({
     plotly::ggplotly(
-      ggplot(dflm, aes(x = m2, y = y2)) +
-        geom_line(aes(y=.fitted), color="lightgrey") +
-        geom_segment(aes(xend = m2, yend = .fitted), alpha = .2) +
-        geom_point(aes(color = abs(.resid))) + # size also mapped
-        scale_color_continuous(low = "black", high = "red") +
-        guides(color = FALSE, size = FALSE)
+      ggplot2::ggplot(dflm, ggplot2::aes(x = m2, y = y2)) +
+        ggplot2::geom_line(ggplot2::aes(y=.fitted), color="lightgrey") +
+        ggplot2::geom_segment(ggplot2::aes(xend = m2, yend = .fitted), alpha = .2) +
+        ggplot2::geom_point(ggplot2::aes(color = abs(.resid))) + # size also mapped
+        ggplot2::scale_color_continuous(low = "black", high = "red") +
+        ggplot2::guides(color = FALSE, size = FALSE)
     )
   })
   
   output$lm_resid <- plotly::renderPlotly({
-    plot <- ggplot(dflm, aes(x = date, y = .resid)) + 
-      geom_line()
+    plot <- ggplot2::ggplot(dflm, ggplot2::aes(x = date, y = .resid)) + 
+      ggplot2::geom_line()
     plotly::ggplotly(plot)
   })
   

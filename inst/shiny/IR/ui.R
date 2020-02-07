@@ -1,19 +1,18 @@
-library(shinydashboard)
-library(waiter)
+## ui.R ##
 
 if(interactive()){
   
-  ui <- dashboardPage(
+  ui <- shinydashboard::dashboardPage(
     
-    dashboardHeader(title = "Time Series Project"),
+    shinydashboard::dashboardHeader(title = "Time Series Project"),
     
-    dashboardSidebar(
+    shinydashboard::dashboardSidebar(
       
-      sidebarMenuOutput("menu")
+      shinydashboard::sidebarMenuOutput("menu")
       
     ),
     
-    dashboardBody(
+    shinydashboard::dashboardBody(
       
       # css
       tags$head(
@@ -24,11 +23,11 @@ if(interactive()){
                   href = "https://cdn0.iconfinder.com/data/icons/data-collection-and-privacy/100/Data_Science_Analysis-512.png")
       ),
       
-      use_waiter(),
-      waiter_show_on_load(html = spin_flower()), # will show on load
+      waiter::use_waiter(),
+      waiter::waiter_show_on_load(html = waiter::spin_flower()), # will show on load
       
-      tabItems(
-        tabItem(tabName = "tab_1",
+      shinydashboard::tabItems(
+        shinydashboard::tabItem(tabName = "tab_1",
                 shinyanimate::withAnim(),
                 tags$div(id = 'effect_1',
                          
@@ -53,11 +52,12 @@ if(interactive()){
         ),
         
         
-        tabItem(tabName = "tab_2",
+        shinydashboard::tabItem(tabName = "tab_2",
                 shinyanimate::withAnim(),
                 tags$div(id = 'effect_2',
                          HTML("<h2>Data Inspection</h2>"),
                          plotly::plotlyOutput(outputId = "distPlot"),
+                         
                          HTML("<h4>M2 and y2 are the main interest rates analysed in this report. M2 refers
                    to the US dollar LIBOR interbank rate with maturity 2 months, whereas y2 refers
                    to a 2-year maturity. As can be seen from figure 1, the yield curve is not 
@@ -97,7 +97,7 @@ if(interactive()){
                 )
         ),
         
-        tabItem(tabName = "tab_3",
+        shinydashboard::tabItem(tabName = "tab_3",
                 shinyanimate::withAnim(),
                 tags$div(id = 'effect_3',
                          HTML("
@@ -140,7 +140,7 @@ if(interactive()){
                          pre(id="VEC")
                 )
         ),
-        tabItem(tabName = "tab_4",
+        shinydashboard::tabItem(tabName = "tab_4",
                 shinyanimate::withAnim(),
                 tags$div(id = 'effect_4',
                          
