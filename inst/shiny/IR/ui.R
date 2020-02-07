@@ -47,7 +47,9 @@ if(interactive()){
                    interbank rates.</h4>
                    <h4><br>The term_structure dataset can be downloaded by clicking on the button below.</h4>
                    "),
-                         downloadButton('download',"Download the data"))
+                         downloadButton('download',"Download the data")
+                         
+                         )
         ),
         
         
