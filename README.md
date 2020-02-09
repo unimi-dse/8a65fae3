@@ -3,7 +3,7 @@
 # Interest Rates Package
 
 The package has a Shiny app to explore the term structure of LIBOR interbank rates.
-Data is loaded from the csv file term_structure.
+Data is stored as an .rda object.
 
 ## Installation
 

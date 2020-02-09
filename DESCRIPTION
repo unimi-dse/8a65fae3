@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Gregorio Saporito
 Maintainer: Gregorio Saporito <gregsap@hotmail.it>
 Description: This package incorporates a Shiny app to explore the term structure of
-    LIBOR interbank rates in the US. The data is loaded from the csv file term_structure.
+    LIBOR interbank rates in the US. The data is stored as an .rda object.
 Depends: R (>= 3.5.0)
 Imports:
     shiny (>= 1.4.0),
