@@ -46,7 +46,7 @@ cointtest <- urca::ca.jo(mysample, K=2, spec = "transitory", type="eigen")
 
 server <- function(input, output, session) {
   
-  Sys.sleep(2)
+  # Sys.sleep(2)
   waiter::waiter_hide()
   
   output$menu <- shinydashboard::renderMenu({
