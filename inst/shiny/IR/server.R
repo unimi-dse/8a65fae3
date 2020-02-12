@@ -1,52 +1,53 @@
 ## server.R ##
 
-# function to show console output in shiny
-withConsoleRedirect <- function(containerId, expr) {
-  # Change type="output" to type="message" to catch stderr
-  # (messages, warnings, and errors) instead of stdout.
-  txt <- capture.output(results <- expr, type = "output")
-  if (length(txt) > 0) {
-    shiny::insertUI(paste0("#", containerId), where = "beforeEnd",
-                    ui = paste0(txt, "\n", collapse = "")
-    )
-  }
-  results
-}
-
-
-# clean data --------------------------------------------------------------
-data <- interestrates::term_structure
-
-data_gathered <- dplyr::mutate(
-  tidyr::gather(
-    data[,c("date", "m2", "y2")],
-    key="type", value="value", -date
-    ),
-  type = as.factor(type)
-  )
-
-spreads <- dplyr::mutate(data, spreads = y2-m2)
-
-# cointegration test ------------------------------------------------------
-
-# linear regression model
-mod <- lm(y2 ~ m2, data = data)
-dflm <- dplyr::mutate(
-  broom::augment(mod),
-  date=data$date)
-
-adfred <- aTSA::adf.test(dflm$.resid, nlag = 3)
-
-# analysis ----------------------------------------------------------------
-
-mysample <- data[, c("m2", "y2")]
-# VARselect(mysample, lag.max = 10, type = "const")
-cointtest <- urca::ca.jo(mysample, K=2, spec = "transitory", type="eigen")
-# cajorls(cointtest)
-
 server <- function(input, output, session) {
   
-  # Sys.sleep(2)
+  # section 1 ---------------------------------------------------------------
+  
+  # function to show console output in shiny
+  withConsoleRedirect <- function(containerId, expr) {
+    # Change type="output" to type="message" to catch stderr
+    # (messages, warnings, and errors) instead of stdout.
+    txt <- capture.output(results <- expr, type = "output")
+    if (length(txt) > 0) {
+      shiny::insertUI(paste0("#", containerId), where = "beforeEnd",
+                      ui = paste0(txt, "\n", collapse = "")
+      )
+    }
+    results
+  }
+  
+  # data
+  data <- interestrates::term_structure
+  
+  data_gathered <- dplyr::mutate(
+    tidyr::gather(
+      data[,c("date", "m2", "y2")],
+      key="type", value="value", -date
+    ),
+    type = as.factor(type)
+  )
+  
+  spreads <- dplyr::mutate(data, spreads = y2-m2)
+  
+  # cointegration test
+  
+    # linear regression model
+    mod <- lm(y2 ~ m2, data = data)
+    dflm <- dplyr::mutate(
+      broom::augment(mod),
+      date=data$date)
+    
+    adfred <- aTSA::adf.test(dflm$.resid, nlag = 3)
+    
+    # analysis
+    mysample <- data[, c("m2", "y2")]
+    # VARselect(mysample, lag.max = 10, type = "const")
+    cointtest <- urca::ca.jo(mysample, K=2, spec = "transitory", type="eigen")
+    # cajorls(cointtest)
+
+  # section 2 ---------------------------------------------------------------
+
   waiter::waiter_hide()
   
   output$menu <- shinydashboard::renderMenu({
