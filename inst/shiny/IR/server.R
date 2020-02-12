@@ -15,7 +15,7 @@ withConsoleRedirect <- function(containerId, expr) {
 
 
 # clean data --------------------------------------------------------------
-data <- term_structure
+data <- interestrates::term_structure
 
 data_gathered <- dplyr::mutate(
   tidyr::gather(
